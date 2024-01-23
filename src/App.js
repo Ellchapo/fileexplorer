@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+//📁📁
+import { useState } from 'react';
 import './App.css';
+import File from './File';
+import explorer from './folderData';
+import useFile from './useFile';
 
 function App() {
+
+  const [insertNode]=useFile({explorer});
+  const [updatedfile,setUpdatedFile]=useState(explorer);
+  
+  const fileUpdater=({})=>{
+   const ifile=insertNode()
+
+   setUpdatedFile();
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <File fl= {explorer} fileUpdater={fileUpdater} />
     </div>
   );
 }
